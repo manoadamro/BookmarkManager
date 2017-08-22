@@ -57,7 +57,7 @@ GEM
       bcrypt-ruby (~> 3.0)
       dm-core (~> 1.2.0)
       fastercsv (~> 1.5)
-      json (~> 1.6)
+      json (~> 2.1.0)
       multi_json (~> 1.0)
       stringex (~> 1.4)
       uuidtools (~> 2.1)
