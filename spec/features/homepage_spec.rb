@@ -1,5 +1,4 @@
 #
-# 
 # require './app/models/bookmark'
 #
 # DatabaseCleaner.strategy = :truncation
