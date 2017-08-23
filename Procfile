@@ -1,1 +1,1 @@
-web: bundle exec rackup config.ru -p 2345
+web: bundle exec rackup config.ru
