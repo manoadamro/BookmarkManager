@@ -11,7 +11,7 @@ feature 'add links' do
     DatabaseCleaner.clean
   end
 
-  scenario 'shows links' do
+  scenario 'creates and displays them links' do
     visit '/links'
     click_button('Add link')
     fill_in :title, with: 'Twitter'

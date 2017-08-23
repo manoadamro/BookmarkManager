@@ -1,6 +1,8 @@
 require 'sinatra/base'
 require_relative './models/bookmark'
 
+ENV['RACK_ENV'] ||= 'development'
+
 # in app.rb
 class App < Sinatra::Base
   get '/links' do
