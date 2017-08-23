@@ -1,7 +1,6 @@
 ruby '2.4.0'
 
 source 'https://rubygems.org'
-
 gem 'data_mapper'
 gem 'database_cleaner'
 gem 'dm-postgres-adapter'
