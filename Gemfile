@@ -6,6 +6,8 @@ gem 'capybara'
 gem 'data_mapper'
 gem 'database_cleaner'
 gem 'dm-postgres-adapter'
+gem 'pg'
+gem 'rerun'
 gem 'rspec'
 gem 'selenium-webdriver'
 gem 'simplecov', require: false, group: :test
