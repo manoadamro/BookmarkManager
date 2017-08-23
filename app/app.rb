@@ -5,6 +5,11 @@ ENV['RACK_ENV'] ||= 'development'
 
 # in app.rb
 class App < Sinatra::Base
+
+  get '/' do
+    redirect '/links'
+  end
+
   get '/links' do
     @bookmarks = Bookmark.all
     erb(:links)
