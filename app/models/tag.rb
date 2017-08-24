@@ -3,9 +3,8 @@ require 'data_mapper'
 require 'dm-postgres-adapter'
 
 # lib/bookmarks.rb
-class Bookmark
+class Tag
   include DataMapper::Resource
   property :id, Serial
-  property :title, String
-  property :link, String
+  property :catagory, String
 end
