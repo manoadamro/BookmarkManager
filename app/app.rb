@@ -1,4 +1,6 @@
 require 'sinatra/base'
+require 'data_mapper'
+require 'dm-postgres-adapter'
 
 ENV['RACK_ENV'] ||= 'development'
 
