@@ -15,8 +15,9 @@ feature 'add links' do
     visit '/links'
     click_button('Add link')
     fill_in :title, with: 'Twitter'
+    fill_in :catagory, with: 'Social'
     fill_in :link, with: 'www.twitter.com'
     click_button('Submit')
-    expect(page).to have_content('Twitter: www.twitter.com')
+    expect(page).to have_content('[Social] Twitter: www.twitter.com')
   end
 end
