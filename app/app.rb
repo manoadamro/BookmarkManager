@@ -1,19 +1,9 @@
+ENV['RACK_ENV'] ||= 'development'
+
 require 'sinatra/base'
 require 'data_mapper'
 require 'dm-postgres-adapter'
-
-ENV['RACK_ENV'] ||= 'development'
-
-DataMapper.setup(
-  :default, ENV['DATABASE_URL'] ||
-  "postgres://localhost/bookmark_manager_#{ENV['RACK_ENV']}"
-)
-
-require_relative './models/bookmark'
-require_relative './models/tag'
-
-DataMapper.finalize
-DataMapper.auto_upgrade!
+require_relative 'data_mapper_setup'
 
 # in app.rb
 class App < Sinatra::Base
@@ -31,11 +21,14 @@ class App < Sinatra::Base
   end
 
   post '/links' do
-    Bookmark.create(
+    link = Bookmark.create(
       title: params[:title],
-      catagory: params[:catagory],
       link: params[:link]
     )
+    tag = Tag.first_or_create(category: params[:tag])
+    link.tags << tag
+    link.save
+
     redirect '/links'
   end
 end

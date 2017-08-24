@@ -2,7 +2,7 @@
 <h1>Links</h1>
 <br />
 <% @bookmarks.each do |link| %>
-  <p><%= "[#{link.catagory}] #{link.title}: #{link.link}" %></p>
+  <p><%= "#{link.title}: #{link.link}" %></p>
 <% end %>
 <form action='/links/new' method='get'>
   <input type='submit' value='Add link'/>
