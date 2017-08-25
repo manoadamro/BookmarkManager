@@ -11,41 +11,32 @@ def setup_test(title = 'Twitter', tag = 'Social', url = 'www.twitter.com')
 end
 
 feature 'add links' do
-  before do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.start
-  end
-
-  after do
-    DatabaseCleaner.clean
-  end
-
   scenario 'creates and displays them links' do
     setup_test
-    expect(page).to have_content('Twitter: www.twitter.com ["Social"]')
+    expect(page).to have_content('Twitter: www.twitter.com ["social"]')
   end
 
   scenario 'adds tags' do
     setup_test
     link = Bookmark.first
-    expect(link.tags.map(&:category)).to include('Social')
+    expect(link.tags.map(&:category)).to include('social')
   end
 end
 
 feature 'shows links by tag' do
-  before do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.start
-  end
-
-  after do
-    DatabaseCleaner.clean
-  end
-
-  scenario 'shows links by tag \'Bubbles\'' do
-    setup_test 'Bubbles.com', 'Bubbles', 'www.bubbles.com'
+  scenario 'shows links by tag \'bubbles\'' do
+    setup_test 'Bubbles.com', 'bubbles', 'www.bubbles.com'
     visit '/tags/bubbles'
-    expect(page).to have_content 'Bubbles.com: www.bubbles.com ["Bubbles"]'
-    expect(page).to_not have_content 'Twitter: www.twitter.com ["Social"]'
+    expect(page).to have_content 'Bubbles.com: www.bubbles.com ["bubbles"]'
+    expect(page).to_not have_content 'Twitter: www.twitter.com ["social"]'
+  end
+end
+
+
+feature 'Adds multiple tags' do
+  scenario 'shows links by tag \'Bubbles\'' do
+    setup_test 'Bubbles.com', 'bubbles, nubbles', 'www.bubbles.com'
+    visit '/tags/bubbles'
+    expect(page).to have_content 'Bubbles.com: www.bubbles.com ["bubbles", "nubbles"]'
   end
 end

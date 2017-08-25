@@ -21,9 +21,9 @@ class App < Sinatra::Base
   end
 
   get '/tags/:name' do
-    tag = Tag.first(category: params[:category])
-    @bookmarks = tag ? tag.links : []
-    erb(:tags)
+    tag = Tag.first(category: params[:name])
+    @bookmarks = tag ? tag.bookmarks : []
+    erb(:links)
   end
 
   post '/links' do
@@ -31,8 +31,10 @@ class App < Sinatra::Base
       title: params[:title],
       link: params[:link]
     )
-    tag = Tag.first_or_create(category: params[:tag])
-    link.tags << tag
+    params[:tag].split(', ').each do |t|
+      tag = Tag.first_or_create(category: t.delete(' ').downcase)
+      link.tags << tag
+    end
     link.save
 
     redirect '/links'
