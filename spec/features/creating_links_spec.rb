@@ -30,11 +30,7 @@ feature 'shows links by tag' do
     expect(page).to have_content 'Bubbles.com: www.bubbles.com ["bubbles"]'
     expect(page).to_not have_content 'Twitter: www.twitter.com ["social"]'
   end
-end
-
-
-feature 'Adds multiple tags' do
-  scenario 'shows links by tag \'Bubbles\'' do
+  scenario 'handles multiple tags' do
     setup_test 'Bubbles.com', 'bubbles, nubbles', 'www.bubbles.com'
     visit '/tags/bubbles'
     expect(page).to have_content 'Bubbles.com: www.bubbles.com ["bubbles", "nubbles"]'
