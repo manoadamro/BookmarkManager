@@ -33,6 +33,8 @@ feature 'shows links by tag' do
   scenario 'handles multiple tags' do
     setup_test 'Bubbles.com', 'bubbles, nubbles', 'www.bubbles.com'
     visit '/tags/bubbles'
-    expect(page).to have_content 'Bubbles.com: www.bubbles.com ["bubbles", "nubbles"]'
+    expect(page).to have_content(
+      'Bubbles.com: www.bubbles.com ["bubbles", "nubbles"]'
+    )
   end
 end
