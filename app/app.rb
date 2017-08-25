@@ -20,8 +20,9 @@ class App < Sinatra::Base
     erb(:add_link)
   end
 
-  get '/tags/bubbles' do
-    @bookmarks = Bookmark.all
+  get '/tags/:name' do
+    tag = Tag.first(name: params[:name])
+    @bookmarks = tag ? tag.links : []
     erb(:tags)
   end
 
