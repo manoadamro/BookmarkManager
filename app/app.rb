@@ -21,7 +21,7 @@ class App < Sinatra::Base
   end
 
   get '/tags/:name' do
-    tag = Tag.first(name: params[:name])
+    tag = Tag.first(category: params[:category])
     @bookmarks = tag ? tag.links : []
     erb(:tags)
   end
