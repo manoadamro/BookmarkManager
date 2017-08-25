@@ -6,6 +6,8 @@ gem 'database_cleaner'
 gem 'dm-postgres-adapter'
 gem 'pg'
 gem 'rake'
+gem 'capybara'
+gem 'rspec'
 gem 'rerun'
 gem 'selenium-webdriver'
 gem 'simplecov', require: false, group: :test
@@ -13,6 +15,5 @@ gem 'simplecov-console', require: false, group: :test
 gem 'sinatra'
 
 group :test do
-  gem 'capybara'
-  gem 'rspec'
+
 end
