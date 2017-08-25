@@ -20,6 +20,11 @@ class App < Sinatra::Base
     erb(:add_link)
   end
 
+  get '/tags/bubbles' do
+    @bookmarks = Bookmark.all
+    erb(:tags)
+  end
+
   post '/links' do
     link = Bookmark.create(
       title: params[:title],
@@ -31,4 +36,8 @@ class App < Sinatra::Base
 
     redirect '/links'
   end
+end
+
+App.get '/*' do
+  'NAH M89, 404'
 end
